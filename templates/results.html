@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="mt-3">
+		<p class="card text-primary" style="padding:10px;">File Name: {{csv.csv}}</p>
+		<div class="row row-cols-1 row-cols-md-2 g-4">
+			<div class="col">
+				<div class="card h-100">
+					<h5 class="card-header">Summary</h5>
+					<div class="card-body">
+						<p>TOTAL ITEMS ==> <b>{{ all_items }}</b></p>
+						<p>GIVEN MIN-SUPPORT ==> <b>{{ csv.min_support }}</b></p>
+						<p>APRIORI ALGORITHM RUN-TIME ==> <b>{{  program_run_time }} hrs:mins:sec.ms</b></p>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card h-100">
+					<div class="">
+						<h5 class="card-header">Results</h5>
+						<table class="table table-sm table-borderless">
+							<thead>
+								<tr>
+									<th scope="col">Item</th>
+									<th scope="col">Count</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for i in items %}
+									<tr>
+										<td>{{ i.0 }}</td>
+										<td>{{ i.1 }}</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mt-3">
+			<div class="card h-100">
+				<div class="card-body">
+					<h5 class="card-header">File content</h5>
+					{{content}}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

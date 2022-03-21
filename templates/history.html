@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="row row-cols-1 row-cols-md-3 g-4">
+		{% for csv in csvs  %}
+			<div class="col">
+				<div class="card h-100">
+					<div class="card-body">
+						<h5 class="card-title text-primary">{{ csv.csv.name|upper }}</h5>
+						<p class="card-text">minimum support:{{csv.min_support}}</p>
+						<a class="btn btn-sm btn-outline-primary" href="{% url 'results' csv.pk %}">View</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock content %}
